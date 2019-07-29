@@ -81,6 +81,6 @@ class UpdateEventPageviews
   end
 
   def extract_data(response)
-    JSON.parse(response.body)['reports'][0]['data']['rows']
+    JSON.parse(response.body)['reports'][0].dig('data', 'rows')
   end
 end
