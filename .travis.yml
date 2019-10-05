@@ -10,6 +10,7 @@ addons:
     packages:
     - libxml2-dev
     - libxslt1-dev
+    - imagemagick
     - optipng
     - pngquant
     - jpegoptim
