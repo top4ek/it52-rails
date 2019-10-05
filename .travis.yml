@@ -4,7 +4,7 @@ addons:
   code_climate:
     repo_token:
       secure: rHKRm9apsLJJxFYf1ZoylgOw+rpqdaPIxK+LeyJVYHhnFYMDpjl58wQwKx0zwv96NSITnwXChacfyHHFT/5QS+Htjmiro9F8bOfaUswBggG9BmWlrqJ4te94dlYVcbhgTEY37+9ZuzPK5RDA1zyGk/q4zAFme+dmy3JIkGH3MPs=
-  postgresql: '10'
+  postgresql: '11'
   apt:
     update: true
     packages:
@@ -13,8 +13,8 @@ addons:
     - optipng
     - pngquant
     - jpegoptim
-    - postgresql-10
-    - postgresql-client-10
+    - postgresql-11
+    - postgresql-client-11
 cache:
   bundler: true
   yarn: true
@@ -24,7 +24,7 @@ cache:
 language: ruby
 sudo: required
 rvm:
-- 2.6.4
+- 2.6.5
 before_install:
 - gem update --system
 - gem install bundler
