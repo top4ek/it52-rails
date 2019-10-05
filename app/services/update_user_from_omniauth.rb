@@ -15,9 +15,7 @@ class UpdateUserFromOmniauth
     @data = data
   end
 
-  def save
-    user.save
-  end
+  delegate :save, to: :user
 
   def set_attributes
     DELEGATED_METHODS.each do |method|

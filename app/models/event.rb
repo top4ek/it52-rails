@@ -109,11 +109,11 @@ class Event < ApplicationRecord
   end
 
   def past?
-    started_at < Time.now
+    started_at < Time.zone.now
   end
 
   def publish!
-    self.published_at = Time.now
+    self.published_at = Time.zone.now
     toggle :published
     save!
   end
@@ -209,7 +209,7 @@ class Event < ApplicationRecord
   private
 
   def build_foreign_link(user)
-    return nil unless foreign_link.present?
+    return nil if foreign_link.blank?
 
     url = URI.parse(foreign_link)
     url_params = Rack::Utils.parse_nested_query(url.query).deep_symbolize_keys

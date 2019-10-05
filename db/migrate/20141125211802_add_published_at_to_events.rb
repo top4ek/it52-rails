@@ -5,7 +5,7 @@ class AddPublishedAtToEvents < ActiveRecord::Migration[4.2]
     add_column :events, :published_at, :datetime
 
     Event.published.each do |event|
-      publish_time = event.past? ? event.created_at : Time.now
+      publish_time = event.past? ? event.created_at : Time.zone.now
       event.update(published_at: publish_time)
     end
   end

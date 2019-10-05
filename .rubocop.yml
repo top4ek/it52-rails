@@ -4,8 +4,24 @@ inherit_from:
 
 require:
   - rubocop-faker
+  - rubocop-i18n
+  - rubocop-md
   - rubocop-performance
+  - rubocop-rails
   - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+
+Style/HashSyntax:
+  Exclude:
+    - 'app/controllers/events_controller.rb'
+    - 'lib/da_data/request.rb'
 # The behavior of RuboCop can be controlled via the .rubocop.yml
 # configuration file. It makes it possible to enable/disable
 # certain cops (checks) and to alter their behavior if they accept

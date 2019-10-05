@@ -124,7 +124,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-faker', require: false
+  gem 'rubocop-i18n', require: false
+  gem 'rubocop-md', require: false
   gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
 end
 

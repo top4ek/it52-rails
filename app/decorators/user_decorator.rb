@@ -20,6 +20,6 @@ class UserDecorator < Draper::Decorator
   end
 
   def link_to_website
-    h.link_to object.website, object.website, target: :_blank if object.website?
+    h.link_to object.website, object.website, target: :_blank, rel: :noopener if object.website?
   end
 end
