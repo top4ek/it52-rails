@@ -7,6 +7,7 @@ describe DaData::Request do
 
   describe '.new' do
     it { expect(subject.content_type).to eq 'application/json' }
+
     it {
       expect(subject.client.default_options.headers.to_h)
         .to include('Content-Type' => 'application/json', 'Accept' => 'application/json')

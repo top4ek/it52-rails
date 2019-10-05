@@ -96,13 +96,13 @@ RSpec.describe StartupsController, type: :controller do
       before { sign_in user }
 
       context 'with valid params' do
-        it { expect { create_request }.to change { Startup.count }.from(0).to(1) }
+        it { expect { create_request }.to change(Startup, :count).from(0).to(1) }
       end
 
       context 'with invalid params' do
         let(:create_request) { post :create, params: { startup: invalid_attributes } }
 
-        it { expect { create_request }.not_to change { Startup.count } }
+        it { expect { create_request }.not_to change(Startup, :count) }
       end
     end
   end
@@ -136,7 +136,7 @@ RSpec.describe StartupsController, type: :controller do
       context 'with invalid params' do
         let(:update_request) { put :update, params: { id: startup.to_param, startup: invalid_attributes } }
 
-        it { expect { update_request }.not_to change { startup.title } }
+        it { expect { update_request }.not_to change(startup, :title) }
       end
     end
   end

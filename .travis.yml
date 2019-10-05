@@ -4,7 +4,7 @@ addons:
   code_climate:
     repo_token:
       secure: rHKRm9apsLJJxFYf1ZoylgOw+rpqdaPIxK+LeyJVYHhnFYMDpjl58wQwKx0zwv96NSITnwXChacfyHHFT/5QS+Htjmiro9F8bOfaUswBggG9BmWlrqJ4te94dlYVcbhgTEY37+9ZuzPK5RDA1zyGk/q4zAFme+dmy3JIkGH3MPs=
-  postgresql: '11'
+  postgresql: '10'
   apt:
     update: true
     packages:
@@ -13,8 +13,8 @@ addons:
     - optipng
     - pngquant
     - jpegoptim
-    - postgresql-11
-    - postgresql-client-11
+    - postgresql-10
+    - postgresql-client-10
 cache:
   bundler: true
   yarn: true

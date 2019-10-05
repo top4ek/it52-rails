@@ -2,6 +2,10 @@ inherit_from:
   # - https://raw.githubusercontent.com/rubocop-hq/rubocop/master/config/default.yml
   - .rubocop_todo.yml
 
+require:
+  - rubocop-faker
+  - rubocop-performance
+  - rubocop-rspec
 # The behavior of RuboCop can be controlled via the .rubocop.yml
 # configuration file. It makes it possible to enable/disable
 # certain cops (checks) and to alter their behavior if they accept

@@ -67,11 +67,11 @@ RSpec.configure do |config|
     WebMock.disable_net_connect!(allow_localhost: true)
   end
 
-  config.before(:each) do
+  config.before do
     allow_any_instance_of(MailchimpSynchronizer).to receive(:sync!).and_return({})
   end
 
-  config.around(:each) do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning do
       example.run
     end

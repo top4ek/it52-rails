@@ -25,7 +25,7 @@ module Api
       end
 
       def render_options
-        @default_options.merge! json: @response_object
+        @default_options[:json] = @response_object
         callback.present? ? @default_options.merge(callback: callback) : @default_options
       end
     end

@@ -34,7 +34,7 @@ class Donation < ApplicationRecord
 
     rows = CSV.read(file, col_sep: ';', skip_blanks: true)[5..-1]
     data = rows.select { |val| val[5].include?('it52') }.map do |row|
-      amount = row[2].gsub(',', '.').to_f
+      amount = row[2].tr(',', '.').to_f
       { created_at: Time.zone.parse(row[1]),
         amount: amount,
         amount_in_rub: amount,

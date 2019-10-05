@@ -22,10 +22,8 @@ module Telegram
     end
 
     def send_message(text)
-      @query.merge!(
-        text: normalize_text(text),
-        parse_mode: 'Markdown'
-      )
+      @query[:text] = normalize_text(text)
+      @query[:parse_mode] = 'Markdown'
       post!
     end
 
@@ -49,7 +47,7 @@ module Telegram
 
     def handle_error
       klass = LongMessageError if @result['description'] == 'Message is too long'
-      klass = ParseError if @result['description'] =~ /Can\'t parse message/
+      klass = ParseError if /Can\'t parse message/.match?(@result['description'])
       klass ||= Error
       raise klass, @result['description']
     end
