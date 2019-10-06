@@ -10,4 +10,4 @@ cp config/application.yml.template config/application.yml
 bundle exec rails db:create
 bundle exec rails db:schema:load
 
-rspec
+bundle exec rspec
