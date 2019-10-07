@@ -58,6 +58,7 @@ ru:
       default: "%d.%m.%Y"
       long: "%-d %B %Y"
       short: "%-d %b"
+      timepicker: "%d/%m/%Y"
     month_names:
     -
     - января
@@ -76,8 +77,6 @@ ru:
     - :day
     - :month
     - :year
-    formats:
-      timepicker: "%d/%m/%Y"
 
   cancel: Отмена
   edit: Редактировать

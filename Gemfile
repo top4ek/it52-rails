@@ -72,7 +72,6 @@ gem 'sdoc', group: :doc
 # gem 'apipie-rails', git: 'https://github.com/Apipie/apipie-rails.git', ref: 'f697ec2a887cd73c00c846eceb2ce63a050ccb20'
 
 # Application server
-gem 'foreman'
 gem 'puma-rails'
 
 # Environment variables management
@@ -85,15 +84,20 @@ gem 'pry-rails'
 # Image and AWS S3 management
 gem 'asset_sync'
 gem 'carrierwave'
-gem 'carrierwave-imageoptimizer'
+gem 'carrierwave-vips'
 gem 'fog-aws', '< 3'
-gem 'mini_magick', '>= 4.9.4'
 
 # Monitoring
 gem 'barnes'
 gem 'newrelic_rpm'
 gem 'rollbar'
 gem 'silencer'
+
+# paginator
+gem 'kaminari'
+
+# tags
+gem 'acts-as-taggable-on'
 
 # Utils
 gem 'icalendar'
@@ -133,9 +137,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'codeclimate-test-reporter'
   gem 'codecov', require: false
-  gem 'database_cleaner'
+  gem 'database_cleaner', require: false
   gem 'shoulda-matchers', require: false
   gem 'simplecov'
   gem 'webmock'
@@ -146,9 +149,3 @@ gem 'rails_12factor', group: :production
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# paginator
-gem 'kaminari'
-
-# tags
-gem 'acts-as-taggable-on'

@@ -4,13 +4,15 @@ require 'barnes'
 
 workers Integer(ENV.fetch('WEB_CONCURRENCY') { 2 })
 threads_count = Integer(ENV.fetch('RAILS_MAX_THREADS') { 4 })
-threads threads_count, threads_count
+threads 2, threads_count
 
 preload_app!
 
 rackup      DefaultRackup
 port        Integer(ENV.fetch('PORT') { 3000 })
 environment ENV.fetch('RACK_ENV') { 'development' }
+
+stdout_redirect '/dev/stdout', '/dev/stderr', true
 
 before_fork do
   # worker specific setup

@@ -4,10 +4,16 @@ module UploaderConcern
   extend ActiveSupport::Concern
 
   included do
-    include CarrierWave::MiniMagick
-    include CarrierWave::ImageOptimizer
+    include CarrierWave::Vips
 
     process :optimize
+    process :strip
+  end
+
+  def optimize
+    manipulate! do |image|
+      image.thumbnail_image(image.width)
+    end
   end
 
   # Override the directory where uploaded files will be stored.

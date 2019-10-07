@@ -170,7 +170,7 @@ class EventsController < ApplicationController
   end
 
   def set_model
-    @model = Event.includes(:event_participations, :participants, :organizer)
+    @model = Event.includes(:event_participations, :participants, :organizer, :taggings)
   end
 
   def set_event

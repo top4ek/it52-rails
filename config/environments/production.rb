@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+Rails.application.credentials.production.each { |key, value| ENV[key.to_s] = value }
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -18,7 +20,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -101,11 +103,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.mailing_host }
+  config.action_mailer.default_options = { from: "robot@#{Rails.application.credentials.mailing_host}" }
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: ENV.fetch('mailgun_api_key') { 'mailgun_api_key' },
     domain: ENV.fetch('mailing_host') { 'mailing_host' }
   }
-
-  config.require_master_key = true
 end
