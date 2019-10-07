@@ -5,7 +5,7 @@ default: &default
   min_messages: WARNING
   pool: 5
   username: postgres
-  host: db
+  host: postgres
 
 development:
   <<: *default
@@ -17,4 +17,4 @@ test:
 
 production:
   <<: *default
-  database: it52_rails_prod
+  database: it52

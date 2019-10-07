@@ -1,65 +1,28 @@
+language: generic
+
 services:
-- postgresql
-addons:
-  code_climate:
-    repo_token:
-      secure: rHKRm9apsLJJxFYf1ZoylgOw+rpqdaPIxK+LeyJVYHhnFYMDpjl58wQwKx0zwv96NSITnwXChacfyHHFT/5QS+Htjmiro9F8bOfaUswBggG9BmWlrqJ4te94dlYVcbhgTEY37+9ZuzPK5RDA1zyGk/q4zAFme+dmy3JIkGH3MPs=
-  postgresql: '10'
-  apt:
-    update: true
-    packages:
-    - libxml2-dev
-    - libxslt1-dev
-    - imagemagick
-    - optipng
-    - pngquant
-    - jpegoptim
-    - postgresql-10
-    - postgresql-client-10
-cache:
-  bundler: true
-  yarn: true
-  directories:
-  - /home/travis/.rvm/
-  - node_modules
-language: ruby
-sudo: required
-rvm:
-- 2.6.5
+  - docker
+
 before_install:
-- gem update --system
-- gem install bundler
-- sleep 1
-install:
-- bundle install --jobs=3 --retry=3 --path=vendor/bundle
-- yarn install
-before_script:
-- cp config/database.yml.travis config/database.yml
+- cp config/database.yml.template config/database.yml
 - cp config/secrets.yml.template config/secrets.yml
 - cp config/application.yml.template config/application.yml
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-- chmod +x ./cc-test-reporter
-- ./cc-test-reporter before-build
+- docker-compose pull
+- docker-compose build rails
+
 script:
-- yarn run lint
-- bundle exec rubocop
-- bundle exec rails db:create
-- bundle exec rails db:schema:load
-- travis_wait 15 bundle exec rspec
-after_script:
-- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
-env:
-  global:
-    PGPORT: 5433
-    secure: bp3xJOb795L63tCXYb6XbJmTI7fSquwT59z7QlcUi2lHID7gqNLnCBTtZHjRY1ASSvwqk+hbPj857JXZ3SpGL4mySM0BicKIC7iPIvECtnMQeeg3EBk7h0S5ZE/P00Xk03peWmpbRzClXSZS+kmsRxKREK3dJh6+jO7XNaRpg6w=
+- docker-compose run rails yarn run lint
+- docker-compose run rails bin/rubocop
+- docker-compose run rails bin/rails db:create
+- docker-compose run rails bin/rails db:schema:load
+- docker-compose run rails bin/rspec
+
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker-compose push rails
+
 deploy:
-  provider: heroku
-  api_key:
-    secure: lNHq3StXYbN68U/Jtzwi7DR2xdlZOlpxyGo3aKJyMlyCaqeHelZm0YudVyslmpD/gBzEY97jh9njlqRRbzRL56s6dvBN1jcLYsd6/pY1aOAzNXkM1uzQfec/8IcP9jNYJTiY3cioPf3BLkcWHKVZhw14fQzEmG3Tc+jPe4iy8lY=
-  app: it52
+  provider: script
+  script: build_production.sh
   on:
-    repo: NNRUG/it52-rails
     branch: it52
-  run:
-  - rails db:migrate
-  - restart

@@ -14,14 +14,13 @@ Main branch is [it52](https://github.com/NNRUG/it52-rails/tree/it52)
 
 ## Requirements
 
-- Ruby 2.6.3
-- PostgreSQL 11.x
-- memcached
+- Docker
 
 ИЛИ
 
-- Docker
-
+- Ruby 2.6.5
+- PostgreSQL 11.x
+- redis
 
 ## Getting started
 
@@ -30,9 +29,13 @@ Main branch is [it52](https://github.com/NNRUG/it52-rails/tree/it52)
 [![Docker Hub](https://images.microbadger.com/badges/image/it52/rails.svg)](https://microbadger.com/images/it52/rails "Get your own image badge on microbadger.com")
 [![Docker version](https://images.microbadger.com/badges/version/it52/rails.svg)](https://microbadger.com/images/it52/rails "Get your own version badge on microbadger.com")
 
-Запустить скрипт
+Для начальной настройки запустить скрипт
 
     ./bootstrap.sh
+
+Для запуска сервера и сопутствующих сервисов
+
+    ./start_server.sh
 
 ### Без докера
 

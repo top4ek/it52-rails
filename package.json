@@ -6,6 +6,10 @@
   "author": "Nick Kugaevsky <nick@kugaevsky.ru>",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@material/button": "^2.3.0",
     "@material/card": "^2.3.0",
     "@material/chips": "^2.3.0",
@@ -44,7 +48,7 @@
   },
   "scripts": {
     "snyk-protect": "snyk protect",
-    "lint": "./node_modules/.bin/tslint -c tslint.json 'app/javascript/**/*.ts'"
+    "lint": "tslint -c tslint.json 'app/javascript/**/*.ts'"
   },
   "snyk": false
 }
