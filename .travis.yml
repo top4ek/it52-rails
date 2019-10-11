@@ -33,6 +33,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: build_production.sh
+  script: bash ./build_production.sh
   on:
     branch: it52
