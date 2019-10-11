@@ -8,7 +8,6 @@ before_install:
 
 install:
   - cp config/database.yml.template config/database.yml
-  - cp config/secrets.yml.template config/secrets.yml
   - cp config/application.yml.template config/application.yml
   - docker-compose build rails
 
@@ -30,6 +29,8 @@ after_success:
 before_deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker-compose push rails
+  - cp config/database.yml.template config/database.yml
+  - cp config/application.yml.template config/application.yml
 
 deploy:
   provider: script
