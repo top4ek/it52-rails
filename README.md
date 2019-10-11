@@ -21,15 +21,24 @@ Main branch is [it52](https://github.com/NNRUG/it52-rails/tree/it52)
 [![Docker Hub](https://images.microbadger.com/badges/image/it52/rails.svg)](https://microbadger.com/images/it52/rails "Get your own image badge on microbadger.com")
 [![Docker version](https://images.microbadger.com/badges/version/it52/rails.svg)](https://microbadger.com/images/it52/rails "Get your own version badge on microbadger.com")
 
-Для начальной настройки
+#### Для начальной настройки
 
-1. Скачать образ приложения
-2. Запустить скрипт настройки БД
-3. Запустить сервер разработки и сопутствующие сервисы
+1. Клонировать репозиторий
+2. Скачать образ приложения
+3. Установить зависимости
+4. Запустить скрипт настройки БД
 
 ```bash
+    git clone git@github.com:NNRUG/it52-rails.git
     docker-compose pull rails
+    docker-compose run rails yarn install
+    docker-compose run rails bundle
     docker-compose run rails bin/rails db:setup
+```
+
+#### Для запуска сервера разработки
+
+```bash
     ./start_server.sh
 ```
 
