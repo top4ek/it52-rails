@@ -1,5 +1,10 @@
 version: '3.2'
 services:
+  redis:
+    image: redis:alpine
+    volumes:
+      - 'redis:/data'
+
   backend: &backend
     image: it52/rails:production
     build:
@@ -34,18 +39,15 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - postgres
       - redis
 
   sidekiq:
     <<: *backend
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
-      - postgres
       - redis
 
 volumes:
-  postgres:
   redis:
   bundle:
   node_modules:
