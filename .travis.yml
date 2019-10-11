@@ -4,21 +4,28 @@ services:
   - docker
 
 before_install:
-- cp config/database.yml.template config/database.yml
-- cp config/secrets.yml.template config/secrets.yml
-- cp config/application.yml.template config/application.yml
-- docker-compose pull
-- docker-compose build rails
+  - docker-compose pull rails
+
+install:
+  - cp config/database.yml.template config/database.yml
+  - cp config/secrets.yml.template config/secrets.yml
+  - cp config/application.yml.template config/application.yml
+  - docker-compose build rails
+
+before_script:
+  - docker-compose run rails bin/rails db:create
+  - docker-compose run rails bin/rails db:schema:load
 
 script:
-- docker-compose run rails yarn run lint
-- docker-compose run rails bin/rubocop
-- docker-compose run rails bin/rails db:create
-- docker-compose run rails bin/rails db:schema:load
-- docker-compose run rails bin/rspec
+  - docker-compose run rails yarn run lint
+  - docker-compose run rails bin/rubocop
+  - docker-compose run rails bin/rspec
+
+after_success:
+  - docker-compose down --volumes --remove-orphans
 
 before_deploy:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker login
   - docker-compose push rails
 
 deploy:
