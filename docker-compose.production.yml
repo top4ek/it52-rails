@@ -5,6 +5,27 @@ services:
     volumes:
       - 'redis:/data'
 
+  nginx:
+    image: nginx-alpine
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    volumes:
+      - public:/var/www/it52/public
+      - config/nginx:/etc/nginx/conf.d
+      - config/certbot/conf:/etc/letsencrypt
+      - config/certbot/www:/var/www/certbot
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - certbot
+
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - config/certbot/conf:/etc/letsencrypt
+      - config/certbot/www:/var/www/certbot
+
   backend: &backend
     image: it52/rails:production
     build:
@@ -17,15 +38,10 @@ services:
         - VCS_REF=${VCS_REF}
         - BUILD_DATE=${BUILD_DATE}
         - VERSION=${VERSION}
-
     tmpfs:
       - /tmp
     stdin_open: true
     tty: true
-    volumes:
-      - .:/it52:cached
-      - node_modules:/it52/node_modules
-      - bundle:/it52/vendor/bundle
     env_file:
       - '.env'
     environment:
@@ -35,19 +51,23 @@ services:
 
   rails:
     <<: *backend
-    command: bundle exec rails server -p 3000 -b 0.0.0.0
-    ports:
-      - '3000:3000'
+    volumes:
+      - .:/it52
+      - bundle:/it52/vendor/bundle
+      - public:/it52/public
     depends_on:
       - redis
 
   sidekiq:
     <<: *backend
     command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/it52
+      - bundle:/it52/vendor/bundle
     depends_on:
       - redis
 
 volumes:
   redis:
   bundle:
-  node_modules:
+  public:

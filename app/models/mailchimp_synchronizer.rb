@@ -60,13 +60,13 @@ class MailchimpSynchronizer
   def subscribe!
     @mailchimp.lists.subscribe(*subscribe_params)
   rescue Mailchimp::ListNotSubscribedError, Mailchimp::EmailNotExistsError, Mailchimp::ListInvalidImportError => e
-    { error: e.message }
+    Rollbar.error(e, user: @user)
   end
 
   def unsubscribe!
     @mailchimp.lists.unsubscribe(*unsubscribe_params)
   rescue Mailchimp::ListNotSubscribedError, Mailchimp::EmailNotExistsError, Mailchimp::ListInvalidImportError => e
-    { error: e.message }
+    Rollbar.error(e, user: @user)
   end
 
   def subscribe_params

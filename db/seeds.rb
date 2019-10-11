@@ -22,6 +22,6 @@ admin.update(admin_attrs)
 users = FactoryBot.create_list :user, 40
 
 (1..4).each do |i|
-  event = FactoryBot.create :published_event, :with_markdown, started_at: i.months.from_now
+  event = FactoryBot.create :event, :published, :with_markdown, started_at: i.months.from_now
   event.participants << users.sample((10..40).to_a.sample)
 end
