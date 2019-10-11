@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MailchimpSynchronizer
-  API_KEY = ENV.fetch('mailchimp_api_key') { 'mailchimp_api_key' }
+  API_KEY = ENV.fetch('mailchimp_api_key') { 'mailchimp_api_key-us8' }
   LIST_ID = ENV.fetch('mailchimp_list_id') { 'mailchimp_list_id' }
   PAGE_SIZE = 100
 

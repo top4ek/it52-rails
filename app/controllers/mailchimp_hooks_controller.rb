@@ -29,7 +29,7 @@ class MailchimpHooksController < ApplicationController
 
   def set_user
     @user = User.find_by(email: subscribe_params[:data][:email])
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     head :unprocessable_entity
   end
 end

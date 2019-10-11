@@ -5,6 +5,8 @@ services:
 
 before_install:
   - docker-compose pull rails
+  - docker-compose run rails yarn run lint
+  - docker-compose run rails bin/rubocop
 
 install:
   - docker-compose build rails
@@ -14,8 +16,6 @@ before_script:
   - docker-compose run rails bin/rails db:schema:load
 
 script:
-  - docker-compose run rails yarn run lint
-  - docker-compose run rails bin/rubocop
   - docker-compose run rails bin/rspec
 
 before_cache:

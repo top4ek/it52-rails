@@ -19,7 +19,6 @@ require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
-  - test_prof/rubocop
 
 AllCops:
   Exclude:
