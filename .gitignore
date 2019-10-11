@@ -38,19 +38,10 @@ nginx_rewrite.txt
 *.sublime-workspace
 .idea
 
-/config/database.yml
-/config/application.yml
-/config/settings.yml
-/config/thinking_sphinx.yml
-/config/development.sphinx.conf
-
 /public/system
 /public/assets
 /public/sitemap*
 /public/uploads
-
-# Ignore application configuration
-/config/application.yml
 
 # Ignore test coverage reports
 /coverage/

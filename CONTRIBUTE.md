@@ -84,8 +84,6 @@ $ cd /vagrant
 Для начала работы с проектом нужно создать конфигурационые файлы на основе шаблонов:
 
     cd /vagrant
-    cp config/database.yml.template config/database.yml
-    cp config/application.yml.template config/application.yml
 
 После этого необходимо изменить настройки подключения к БД в файле `config/database.yml` в том случае, если вы решили настроить локальный стэк. Если вы используете виртуалку, то мы всё уже настроили за вас.
 

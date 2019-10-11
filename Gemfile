@@ -4,7 +4,6 @@ ruby '2.6.5'
 
 source 'https://rubygems.org'
 
-gem 'bootsnap'
 gem 'rails', '~> 5.2.0'
 
 # Databases
@@ -49,7 +48,6 @@ gem 'ox'
 
 # Compile and serve assets
 gem 'autoprefixer-rails'
-gem 'csso-rails'
 gem 'font-awesome-sass'
 gem 'sassc-rails'
 gem 'uglifier'
@@ -73,9 +71,6 @@ gem 'sdoc', group: :doc
 
 # Application server
 gem 'puma-rails'
-
-# Environment variables management
-gem 'figaro'
 
 # Sexy rails console
 gem 'awesome_print'
@@ -116,6 +111,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'bootsnap'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # gem 'travis'

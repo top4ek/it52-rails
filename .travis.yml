@@ -7,8 +7,6 @@ before_install:
   - docker-compose pull rails
 
 install:
-  - cp config/database.yml.template config/database.yml
-  - cp config/application.yml.template config/application.yml
   - docker-compose build rails
 
 before_script:

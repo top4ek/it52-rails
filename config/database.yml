@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 4 } %>
+  min_messages: WARNING
+  username: postgres
+  host: postgres
+
+development:
+  <<: *default
+  database: it52_rails_dev
+
+test:
+  <<: *default
+  database: it52_rails_test
+
+production:
+  adapter: postgresql
+  pool: <%= Integer(ENV.fetch('WEB_CONCURRENCY') { 2 }) * Integer(ENV.fetch('RAILS_MAX_THREADS') { 4 }) %>
+  url: <%= ENV.fetch('DATABASE_URL') { 'postgres://postgres:postgres@postgres:5432/it52' } %>
