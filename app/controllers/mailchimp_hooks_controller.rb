@@ -18,7 +18,7 @@ class MailchimpHooksController < ApplicationController
   end
 
   def check
-    render nothing: true, status: :ok
+    head :ok
   end
 
   private
@@ -29,6 +29,7 @@ class MailchimpHooksController < ApplicationController
 
   def set_user
     @user = User.find_by(email: subscribe_params[:data][:email])
-    render nothing: true, status: :unprocessable_entity if @user.nil?
+  rescue ActiveRecord::RecordNotFound => e
+    head :unprocessable_entity
   end
 end

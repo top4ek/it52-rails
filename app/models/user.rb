@@ -144,7 +144,7 @@ class User < ApplicationRecord
 
   def sync_with_mailchimp
     return nil if email.blank?
-    return unless Rails.env.production?
+    return if Rails.env.development?
 
     MailchimpSynchronizer.new(self).sync!
   end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 describe EventsController do
-  let!(:user) { FactoryBot.create :user }
-  let(:admin) { FactoryBot.create :admin }
+  let_it_be(:user) { create :user }
+  let_it_be(:admin) { create :admin }
 
   describe 'POST create' do
-    let(:event_attrs) { FactoryBot.attributes_for(:event) }
+    let(:event_attrs) { attributes_for(:event) }
 
     context 'when user is anonymous' do
       it 'unlogged user cannot create event' do
@@ -41,7 +41,7 @@ describe EventsController do
   end
 
   describe 'DELETE destroy' do
-    let!(:event) { FactoryBot.create(:event) }
+    let!(:event) { create(:event) }
     let(:delete_request) { delete :destroy, params: { id: event.id } }
 
     context 'when user is anonymous' do

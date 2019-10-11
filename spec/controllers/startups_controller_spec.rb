@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe StartupsController, type: :controller do
-  let!(:user) { FactoryBot.create :user }
-  let!(:other_user) { FactoryBot.create :user }
-  let(:admin) { FactoryBot.create :admin }
+  let_it_be(:user) { create :user }
+  let_it_be(:other_user) { create :user }
+  let_it_be(:admin) { create :admin }
 
-  let(:valid_attributes) { FactoryBot.attributes_for(:startup) }
-  let(:invalid_attributes) { FactoryBot.attributes_for(:startup).merge(title: nil) }
+  let(:valid_attributes) { attributes_for(:startup) }
+  let(:invalid_attributes) { attributes_for(:startup).merge(title: nil) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -45,7 +45,7 @@ RSpec.describe StartupsController, type: :controller do
   end
 
   describe 'GET #edit' do
-    let(:startup) { FactoryBot.create(:startup, author: user) }
+    let(:startup) { create(:startup, author: user) }
     let(:edit_request) { get :edit, params: { id: startup.to_param } }
 
     context 'when user is anonymous' do
@@ -108,7 +108,7 @@ RSpec.describe StartupsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    let(:startup) { FactoryBot.create(:startup, author: user) }
+    let(:startup) { create(:startup, author: user) }
     let(:update_request) { put :update, params: { id: startup.to_param, startup: valid_attributes } }
 
     context 'when user is anonymous' do
