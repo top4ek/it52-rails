@@ -21,6 +21,9 @@ script:
   - docker-compose run rails bin/rubocop
   - docker-compose run rails bin/rspec
 
+before_cache:
+  - sudo rm -fr coverage/* public/uploads/* tmp/cache/*
+
 after_success:
   - docker-compose down --volumes --remove-orphans
 
