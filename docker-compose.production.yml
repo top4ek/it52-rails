@@ -6,7 +6,7 @@ services:
       - 'redis:/data'
 
   nginx:
-    image: nginx-alpine
+    image: nginx:alpine
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - public:/var/www/it52/public
