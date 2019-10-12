@@ -71,3 +71,6 @@ volumes:
   redis:
   bundle:
   public:
+  config/nginx:
+  config/certbot/conf:
+  config/certbot/www:
