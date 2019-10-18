@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   before_action :set_organizer, only: :create
   before_action :set_filter_kind, only: :index
 
-  load_and_authorize_resource param_method: :event_params, except: %i[index]
+  load_and_authorize_resource param_method: :event_params, except: %i[index participants]
 
   has_scope :ordered_desc, type: :boolean, allow_blank: true, default: true
 
@@ -47,6 +47,7 @@ class EventsController < ApplicationController
   end
 
   def participants
+    authorize! :download_participants, @event
     participants = @event.participants
     filename = "#{@event.id}_#{@event.slug}_participants"
     columns_to_export = %w[email profile_link full_name employment]

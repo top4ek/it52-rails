@@ -4,6 +4,46 @@ describe EventsController do
   let!(:user) { FactoryBot.create :user }
   let(:admin) { FactoryBot.create :admin }
 
+  describe 'GET participants' do
+    let_it_be(:organizer) { create :user }
+    let_it_be(:event) { create(:event, organizer: organizer) }
+
+    let(:participants_request) { get :participants, params: { id: event.id, format: :csv } }
+
+    context 'when user is anonymous' do
+      before { participants_request }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when user is logged in' do
+      before do
+        sign_in user
+        participants_request
+      end
+
+      it { expect(response).to redirect_to root_path }
+    end
+
+    context 'when organizer is logged in' do
+      before do
+        sign_in organizer
+        participants_request
+      end
+
+      it { expect(response).to have_http_status(:ok) }
+    end
+
+    context 'when admin is logged in' do
+      before do
+        sign_in admin
+        participants_request
+      end
+
+      it { expect(response).to have_http_status(:ok) }
+    end
+  end
+
   describe 'POST create' do
     let(:event_attrs) { FactoryBot.attributes_for(:event) }
 
