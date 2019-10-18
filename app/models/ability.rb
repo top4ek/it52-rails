@@ -18,6 +18,7 @@ class Ability
       can :create, Event
       can :read, Event, organizer_id: user.id
       can :update, Event, organizer_id: user.id
+      can :download_participants, Event, organizer_id: user.id
       can :destroy, Event, organizer_id: user.id
       cannot :publish, Event
 

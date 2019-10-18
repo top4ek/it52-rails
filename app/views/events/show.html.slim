@@ -68,7 +68,7 @@ script type="application/ld+json" == @structured_data.to_json
           => Event.human_attribute_name(:participants)
           small = @event.participants.size
         .pull-right
-          - if can? :update, @event.object
+          - if can? :download_participants, @event.object
             = link_to t('.participants_export'), participants_event_path(@event, format: :csv), class: 'btn btn-warning'
       .panel-body
         = render partial: 'participants_block', object: @event, as: :event
