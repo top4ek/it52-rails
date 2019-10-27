@@ -102,8 +102,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: Rails.application.credentials.mailing_host }
-  config.action_mailer.default_options = { from: "robot@#{Rails.application.credentials.mailing_host}" }
+  config.action_mailer.default_url_options = { host: ENV.fetch('mailing_host') { 'it52.info' } }
+  config.action_mailer.default_options = { from: "robot@#{ENV.fetch('mailing_host') { 'it52.info' }}" }
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: ENV.fetch('mailgun_api_key') { 'mailgun_api_key' },
