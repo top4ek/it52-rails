@@ -7,8 +7,10 @@ After=docker.service
 Restart=always
 WorkingDirectory=/opt/it52
 
-ExecStart=/usr/bin/docker-compose -f docker/docker-compose.production.yml up rails sidekiq
-ExecStop=/usr/bin/docker-compose -f docker/docker-compose.production.yml down rails sidekiq
+Environment="COMPOSE_PROJECT_NAME=it52"
+
+ExecStart=/usr/local/bin/docker-compose -f docker/docker-compose.production.yml up rails sidekiq
+ExecStop=/usr/local/bin/docker-compose -f docker/docker-compose.production.yml down rails sidekiq
 
 [Install]
 WantedBy=multi-user.target

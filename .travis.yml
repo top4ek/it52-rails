@@ -24,6 +24,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: bash -c "make build_prod"
+  script: bash -c "make build_and_publish_prod"
   on:
     branch: it52

@@ -17,3 +17,7 @@ test: lint rspec
 build_prod:
 	docker build -f docker/Dockerfile.production -t it52/rails:production --build-arg RAILS_MASTER_KEY --cache-from it52/rails:production .
 
+publish_prod:
+	docker push it52/rails:production
+
+build_and_publish_prod: build_prod publish_prod
