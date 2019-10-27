@@ -41,8 +41,8 @@ module It52Rails
     config.active_job.queue_name_delimiter = '.'
 
     # Mailing host
-    config.action_mailer.default_url_options = { host: ENV.fetch('mailing_host') { 'mailing_host' } }
-    config.action_mailer.default_options = { from: "robot@#{ENV.fetch('mailing_host') { 'mailing_host' }}" }
+    config.action_mailer.default_url_options = { host: ENV.fetch('mailing_host') { 'it52.info' } }
+    config.action_mailer.default_options = { from: "robot@#{ENV.fetch('mailing_host') { 'it52.info' }}" }
     config.action_mailer.smtp_settings = {}
     config.action_mailer.delivery_method = :letter_opener
 
