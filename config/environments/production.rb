@@ -64,8 +64,8 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
   config.cache_store = :redis_cache_store, { driver: :hiredis,
-                                             url: ENV.fetch('REDIS_URL') { 'redis://127.0.0.1:6379' },
-                                             expires_in: 10.days,
+                                             url: ENV.fetch('REDIS_URL') { 'redis://redis:6379' },
+                                             expires_in: 60.days,
                                              namespace: :rails_cache,
                                              db: 0 }
 
@@ -107,6 +107,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: ENV.fetch('mailgun_api_key') { 'mailgun_api_key' },
-    domain: ENV.fetch('mailing_host') { 'mailing_host' }
+    domain: ENV.fetch('mailing_host') { 'it52.info' }
   }
 end

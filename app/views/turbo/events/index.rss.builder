@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-cache(@events) do
+cache [:turbo, @events] do
   xml.instruct! :xml, version: '1.0'
   xml.rss version: '2.0',
           'xmlns:yandex' => 'http://news.yandex.ru',
