@@ -1,15 +1,21 @@
 FROM ruby:2.6.5-alpine
 
-# Build-time metadata as defined at http://label-schema.org
-
 RUN apk add --no-cache  build-base \
                         postgresql-dev \
                         tzdata \
                         nodejs \
                         yarn \
-                        glib \
-                        vips-dev \
                         git
+
+RUN apk add --no-cache  jpeg-dev \
+                        tiff-dev \
+                        libjpeg-turbo-dev \
+                        libexif-dev \
+                        giflib-dev \
+                        libpng-dev \
+                        libwebp-dev \
+                        librsvg-dev \
+                        vips-dev
 
 ENV LANG=C.UTF-8 \
     APP_HOME=/it52 \

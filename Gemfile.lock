@@ -388,7 +388,7 @@ GEM
     rubocop-rspec (1.36.0)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
-    ruby-vips (2.0.16)
+    ruby-vips (2.0.15)
       ffi (~> 1.9)
     safe_yaml (1.0.5)
     sassc (2.2.1)
@@ -540,6 +540,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rake
   rubocop-rspec
+  ruby-vips (= 2.0.15)
   sassc-rails
   sdoc
   shoulda-matchers

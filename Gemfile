@@ -77,6 +77,7 @@ gem 'awesome_print'
 gem 'pry-rails'
 
 # Image and AWS S3 management
+gem 'ruby-vips', '2.0.15'
 gem 'asset_sync'
 gem 'carrierwave'
 gem 'carrierwave-vips'
