@@ -17,7 +17,7 @@ gem 'sidekiq'
 # Integrations
 gem 'http'
 gem 'mailchimp-api', require: 'mailchimp'
-gem 'mailgun_rails'
+gem 'mailgun-ruby'
 
 # Normalization and locales
 gem 'postrank-uri'
