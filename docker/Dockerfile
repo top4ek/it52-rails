@@ -7,6 +7,7 @@ RUN apk add --no-cache  build-base \
                         tzdata \
                         nodejs \
                         yarn \
+                        glib \
                         vips-dev \
                         git
 
