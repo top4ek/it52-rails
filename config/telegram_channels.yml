@@ -25,6 +25,7 @@ groups:
       android_nn: Android (Java, Kotlin)
       iosnndevs: iOS (Objective-C, Swift)
       php_nn: PHP NN
+      nnvdotnetchat: .Net (C#, F#)
 
   interests:
     name: По интересам
