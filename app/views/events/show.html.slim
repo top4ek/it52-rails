@@ -1,6 +1,6 @@
 script type="application/ld+json" == @structured_data.to_json
 
-- if can? :edit || can? :publish
+- if can?(:edit, @event.object) || can?(:publish, @event.object)
   .row: .col-xs-12
     .pull-right
       - if can? :edit, @event.object
