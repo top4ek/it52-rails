@@ -880,25 +880,22 @@ $component-offset-horizontal: 180px !default
   margin-bottom: 2rem
   background: white center top no-repeat
   background-size: cover
-  height: 300px
+  min-height: 300px
   margin-left: -1.5rem
   margin-right: -1.5rem
 
   @media (min-width: 768px)
     margin-left: 0
     margin-right: 0
-    height: $container-sm / 2
+    min-height: $container-sm / 2
 
   @media (min-width: 992px)
-    height: $container-md / 2
+    min-height: $container-md / 2
 
   @media (min-width: 1200px)
-    height: $container-lg / 2
+    min-height: $container-lg / 2
 
 .event-page-header
-  position: absolute
-  top: 0
-  left: 0
   width: 100%
   height: 100%
   background-color: transparentize(#111, 0.75)

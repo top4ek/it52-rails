@@ -1,5 +1,17 @@
 script type="application/ld+json" == @structured_data.to_json
 
+- if can? :edit || can? :publish
+  .row: .col-xs-12
+    .pull-right
+      - if can? :edit, @event.object
+        = link_to t(:edit), edit_event_path(@event), class: 'btn btn-default'
+        | &nbsp;
+      - if can? :publish, @event.object
+        - if !@event.published?
+          = link_to t('.publish'), publish_event_path(@event), class: 'btn btn-warning', method: :patch
+        - else
+          = link_to t('.cancel_publication'), cancel_publication_event_path(@event), class: 'btn btn-warning', method: :patch
+
 .title-image-wrapper style="background-image: url(#{image_url(@event.title_image.fb_1200.url)})"
   .event-page-header
     h2
@@ -13,15 +25,6 @@ script type="application/ld+json" == @structured_data.to_json
         div = @event.address_comment
 
 .events-show.event data={ id: @event.id }
-  .pull-right
-    - if can? :edit, @event.object
-      = link_to t(:edit), edit_event_path(@event), class: 'btn btn-default'
-      | &nbsp;
-    - if can? :publish, @event.object
-      - if !@event.published?
-        = link_to t('.publish'), publish_event_path(@event), class: 'btn btn-warning', method: :patch
-      - else
-        = link_to t('.cancel_publication'), cancel_publication_event_path(@event), class: 'btn btn-warning', method: :patch
   .row
     .col-xs-12.col-sm-5
       - if @event.address.present?
