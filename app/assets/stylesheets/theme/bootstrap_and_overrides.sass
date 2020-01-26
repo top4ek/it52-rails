@@ -875,6 +875,7 @@ $component-offset-horizontal: 180px !default
       margin-left: -22px
 
 .title-image-wrapper
+  display: flex
   position: relative
   width: auto
   margin-bottom: 2rem
@@ -906,18 +907,7 @@ $component-offset-horizontal: 180px !default
   text-shadow: 2px 2px 1px #111, 1px 1px 1px #111
   justify-content: space-between
   text-align: center
-
-  @media (min-width: 768px)
-    margin-left: 0
-    margin-right: 0
-    min-height: $container-sm / 2
-
-  @media (min-width: 992px)
-    min-height: $container-md / 2
-
-  @media (min-width: 1200px)
-    min-height: $container-lg / 2
-
+  align-self: stretch
 
   h1
     font-weight: 600
