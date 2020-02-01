@@ -5,6 +5,10 @@ require 'rails_helper'
 describe EventDecorator do
   subject(:decorated_event) { event.decorate }
 
+  before { travel_to Time.zone.local(2020, 1, 1, 1, 1, 1) }
+
+  after { travel_back }
+
   describe '#rendered_description' do
     subject { decorated_event.rendered_description }
 
