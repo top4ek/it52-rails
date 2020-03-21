@@ -4,7 +4,7 @@ ruby '2.7.0'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 
 # Databases
 gem 'hiredis'
@@ -21,12 +21,12 @@ gem 'mailgun-ruby'
 
 # Normalization and locales
 gem 'postrank-uri'
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 5.1.3'
 gem 'unicode'
 
 # Authentication and authorization
 gem 'cancancan'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-github', github: 'omniauth/omniauth-github'
@@ -36,12 +36,12 @@ gem 'omniauth-vkontakte'
 
 # Request handling
 gem 'friendly_id'
-gem 'has_scope'
+gem 'has_scope', '>= 0.7.2'
 
 # Decoration
-gem 'active_model_serializers'
+gem 'active_model_serializers', '>= 0.10.10'
 gem 'activemodel-serializers-xml'
-gem 'draper'
+gem 'draper', '>= 3.1.0'
 gem 'fast_jsonapi'
 gem 'oj'
 gem 'ox'
@@ -49,18 +49,18 @@ gem 'ox'
 # Compile and serve assets
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
-gem 'sassc-rails'
+gem 'sassc-rails', '>= 2.1.2'
 gem 'uglifier'
-gem 'webpacker'
+gem 'webpacker', '>= 4.2.2'
 
 # View template compilers and helpers
 gem 'jbuilder', '~> 2.5'
 gem 'redcarpet'
-gem 'slim-rails'
+gem 'slim-rails', '>= 3.2.0'
 # gem 'active_link_to'
 gem 'high_voltage'
-gem 'meta-tags'
-gem 'simple_form'
+gem 'meta-tags', '>= 2.13.0'
+gem 'simple_form', '>= 5.0.2'
 
 # Reporting
 gem 'jwt'
@@ -91,7 +91,7 @@ gem 'rollbar'
 gem 'silencer'
 
 # paginator
-gem 'kaminari'
+gem 'kaminari', '>= 1.2.0'
 
 # tags
 gem 'acts-as-taggable-on'
@@ -102,7 +102,7 @@ gem 'icalendar'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.2.0'
-  gem 'web-console'
+  gem 'web-console', '>= 3.7.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-commands-rspec'
@@ -124,8 +124,8 @@ group :development, :test do
   gem 'ffaker'
 
   # Model factories
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
+  gem 'factory_bot_rails', '>= 5.1.1'
+  gem 'rspec-rails', '>= 3.9.0'
   gem 'rubocop', require: false
   gem 'rubocop-faker', require: false
   gem 'rubocop-i18n', require: false
