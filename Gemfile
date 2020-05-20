@@ -4,7 +4,7 @@ ruby '2.7.0'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 
 # Databases
 gem 'hiredis'
@@ -35,14 +35,14 @@ gem 'omniauth-twitter', '>= 1.4.0'
 gem 'omniauth-vkontakte', '>= 1.5.1'
 
 # Request handling
-gem 'friendly_id'
+gem 'friendly_id', '>= 5.3.0'
 gem 'has_scope', '>= 0.7.2'
 
 # Decoration
 gem 'active_model_serializers', '>= 0.10.10'
-gem 'activemodel-serializers-xml'
+gem 'activemodel-serializers-xml', '>= 1.0.2'
 gem 'draper', '>= 3.1.0'
-gem 'fast_jsonapi'
+gem 'fast_jsonapi', '>= 1.5'
 gem 'oj'
 gem 'ox'
 
@@ -54,7 +54,7 @@ gem 'uglifier'
 gem 'webpacker', '>= 4.2.2'
 
 # View template compilers and helpers
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 gem 'redcarpet'
 gem 'slim-rails', '>= 3.2.0'
 # gem 'active_link_to'
@@ -79,9 +79,9 @@ gem 'pry-rails'
 # Image and AWS S3 management
 gem 'ruby-vips', '2.0.15'
 
-gem 'asset_sync'
-gem 'carrierwave'
-gem 'carrierwave-vips'
+gem 'asset_sync', '>= 2.9.0'
+gem 'carrierwave', '>= 2.0.2'
+gem 'carrierwave-vips', '>= 1.2.0'
 gem 'fog-aws', '< 3'
 
 # Monitoring
@@ -91,10 +91,10 @@ gem 'rollbar'
 gem 'silencer'
 
 # paginator
-gem 'kaminari'
+gem 'kaminari', '>= 1.2.0'
 
 # tags
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '>= 6.5.0'
 
 # Utils
 gem 'icalendar'
@@ -108,7 +108,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'annotate', require: false
+  gem 'annotate', '>= 3.0.3', require: false
   gem 'capistrano', require: false
   gem 'letter_opener'
 end
@@ -139,7 +139,7 @@ end
 group :test do
   gem 'codecov', require: false
   gem 'database_cleaner', require: false
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '>= 4.2.0', require: false
   gem 'simplecov', require: false
   gem 'test-prof', require: false
   gem 'webmock', require: false
